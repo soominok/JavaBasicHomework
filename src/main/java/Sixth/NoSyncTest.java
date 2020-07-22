@@ -2,7 +2,8 @@ package Sixth;
 
 class Bank {
     // Critical Section(크리티컬 섹션)
-    // money라는 정보가 A,B가 공유하고 있었음 - 동기화 문제 발
+    // money라는 정보가 A,B가 공유하고 있었음 - 동기화 문제 발생
+    // 크리티컬 섹션 보호 안됨.
     private int money = 10000;
 
     public int getMoney() {

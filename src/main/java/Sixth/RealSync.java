@@ -56,6 +56,10 @@ class X extends Thread {
 class Y extends Thread {
     public void run() {
         for(int i = 0; i < 1000; i++) {
+            // 이 연산만 스레드 락 걸어놓은 것!
+            // 쭉 -였다가 적당한 시점에서 +도 하고 있음
+            // 로그인 요청이 들어왔을 때 로그인 스레드가 정상적으로 작동
+            // synchronize를 적절하게 사용해줘야 적절하게 보호 가능.
             synchronized (RealSync.myPrivateBank) {
                 RealSync.myPrivateBank.useMoney(3000);
             }
@@ -79,3 +83,4 @@ public class RealSync {
         y.start();
     }
 }
+
